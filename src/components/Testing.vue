@@ -1,8 +1,6 @@
 <template>
-	<div class="Testing	">
-		<ul>
-			<li v-for="option in options">{{option.name}}</li>
-		</ul>
+	<div class="Testing">
+			<router-link to=${option.url}><button v-for="option in options">{{option.name}}</button></router-link>
 	</div>
 </template>
 

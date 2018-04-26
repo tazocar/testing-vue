@@ -27,10 +27,21 @@
 				firebase.auth().createUserWithEmailAndPassword(this.email, this.password).then(
 					(user) => {
 						// creatind user DB
-						firebase.database().ref('users/' + user.uid).set({
-		          username: this.userName,
-		          email: user.email
+						firebase.database().ref('users/' + this.userName).set({
+		          userId: user.uid,
+		          email: user.email,
+		          username: this.userName
 	        	});
+	        	// Set User Info
+	        	var currentUser = firebase.auth().currentUser
+	        	currentUser.updateProfile({
+						  displayName: this.userName,
+						}).then(function() {
+						  // Update successful.
+						}).catch(function(error) {
+						  // An error happened.
+						});
+
 	          // user.displayName = this.userName
 						alert('Su cuenta ha sido creada');
             this.$router.replace('hello');
