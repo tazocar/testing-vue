@@ -25,7 +25,7 @@
 <script>
 export default {
   name: 's',
-  data: () => {
+  data () {
     return {
       msg: 'Aprendiending Vue'
     }

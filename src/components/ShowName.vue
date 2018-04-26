@@ -1,26 +1,28 @@
 <template>
 	<div class="ShowName">
-		<h1>Welcome {{ $route.params.name }}</h1>
+		<h1>Perfil de {{ $route.params.name }}</h1>
+		<h2>{{ userName }} ha Logeado c:</h2>
 	</div>
 </template>
 <script>
 	import firebase from 'firebase'
 	export default {
 		name: 'ShowName',
-		data: () =>{
+		data: function() {
 			return {
 				userName: ''
 			}
 		},
 		methods: {
-			findExistance: (element) => {
+			findExistance: function() {
 				let user = firebase.auth().currentUser;
-				// check for user and display his name
-        let userNameData = firebase.database().ref('users/' + user.uid + '/username');
-        userNameData.on('value', (snapshot) => {
-          this.userName = snapshot
-        })
-        console.log(element.userName)
+				if (user) {
+					// check for user and display his name
+	        let userNameData = firebase.database().ref('users/' + user.uid + '/username');
+	        userNameData.on('value', (snapshot) => {
+	          this.userName = snapshot
+	        })
+				}
 			},
 			logOnConsole: (element) => {
 				// si uso "this" directamente en este método no funciona, así que lo tomo como parámetro
@@ -31,6 +33,7 @@
 			// console.log(this.$route.params.name)
 			// ejecuto en este componente usando este componente como parámetro
 			this.logOnConsole(this)
+			this.findExistance()
 		}
 	}
 </script>

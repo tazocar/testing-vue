@@ -12,13 +12,13 @@
   import firebase from 'firebase'
   export default {
     name: 'hello',
-    data () {
+    data: function() {
       return {
         userName: ''
       }
     },
     methods: {
-      renderUserName: () => {
+      renderUserName: function() {
         let user = firebase.auth().currentUser;
         if (user) {
           // check for user and display his name
@@ -31,7 +31,7 @@
           console.log('none')
         }
       },
-      logout: () => {
+      logout: function() {
         firebase.auth().signOut().then(() => {
           this.$router.replace('login')
         })
