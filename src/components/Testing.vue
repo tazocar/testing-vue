@@ -1,6 +1,6 @@
 <template>
 	<div class="Testing">
-			<router-link to=${option.url}><button v-for="option in options">{{option.name}}</button></router-link>
+			<router-link  v-for="option in options" :to="option.url"><button>{{option.name}}</button></router-link>
 	</div>
 </template>
 

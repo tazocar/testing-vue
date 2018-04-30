@@ -5,31 +5,26 @@
     <router-link to="/hello"><button>Hello</button></router-link>
     <ul>
       <li>
-        <a
-          href="http://localhost:8080/#/sell"
-        >
-          Sell
-        </a>
+        <a href="http://localhost:8080/#/sell">Sell</a>
       </li>
       <li>
-        <a
-          href="http://localhost:8080/#/login"
-        >
-          Login
-        </a>
+        <a href="http://localhost:8080/#/login">Login</a>
       </li>
     </ul>
   </div>
 </template>
 
 <script>
+import Chart from 'chart.js';
 export default {
   name: 'hello',
   data () {
     return {
-      msg: 'Aprendiending Vue'
+      msg: 'Aprendiending Vue',
     }
-  }
+  },
+  methods: {
+  },
 }
 </script>
 
@@ -48,5 +43,9 @@ li {
 }
 a {
   color: #42b983;
+}
+#resize {
+  width: 100%;
+  height: 200px;
 }
 </style>

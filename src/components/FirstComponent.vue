@@ -3,7 +3,10 @@
     <h1>First Component {{ msg }}</h1>
     <router-link to="/hello"><button>Hello</button></router-link>
     <ul>
-      <li v-for="(element, index) in list">{{ index + 1 }} {{ element.name }} </li>
+      <li v-for="(element, index) in list">
+        {{ index + 1 }} {{ element.name }}
+        <button @click="$delete(list, index)">Delete this</button>
+      </li>
     </ul>
     <h3 v-if="(list.length <= 2)">2 o menos :c naranja</h3>
     <h3 v-else> Más de 2 YEY! verde</h3>
@@ -36,7 +39,10 @@
       addOne: function() {
         this.list.push({ name: this.newOne })
         this.newOne = '';
-      }
+      },
+      /* deleteThis: function(index) {
+        this.list.splice(index, 1)
+      } */
     }
   }
 </script>
