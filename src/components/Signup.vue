@@ -1,15 +1,32 @@
 <template>
 	<div class="signup">
-		<h2>Regístrate</h2>
-		<!-- v-model to bind the content of my input to the "email" or "password" data return (like a variable)-->
-		<input type="text" placeholder="user name" v-model="userName">
-		<input type="text" v-model="email" placeholder="Email">
-		<input type="password" v-model="password" placeholder="Password">
-		<button v-on:click="signup">Registrar</button>
-		<router-link to="/login"><button>Volver atrás</button></router-link>
+		<el-row type="flex" justify="center">
+			<el-col :sm="12" :lg="6">
+				<div class="mainContainer">
+					<el-form>
+						<div class="titleContainer">
+							<h2>Regístrate</h2>
+						</div>
+							<!-- v-model to bind the content of my input to the "email" or "password" data return (like a variable)-->
+							<el-form-item>
+								<el-input type="text" placeholder="Nombre de usuario" v-model="userName"></el-input>
+							</el-form-item>
+							<el-form-item>
+								<el-input type="text" v-model="email" placeholder="Email"></el-input>
+							</el-form-item>
+							<el-form-item>
+								<el-input type="password" v-model="password" placeholder="Password"></el-input>
+							</el-form-item>
+							<el-form-item>
+								<el-button type="primary" v-on:click="signup">Registrar</el-button>
+								<p>¿Ya estás registrado? <router-link to="/login">Volver al Login</router-link></p>
+							</el-form-item>
+						</el-form>
+				</div>
+			</el-col>
+		</el-row>
 	</div>
 </template>
-
 <script>
 	import firebase from 'firebase'
 	export default {
@@ -18,7 +35,8 @@
 			return {
 				email: '',
 				password: '',
-				userName: ''
+				userName: '',
+				input: ''
 			}
 		},
 		methods: {
@@ -54,3 +72,30 @@
 		}
 	}
 </script>
+<style scoped>
+	.titleContainer {
+		background-color: #232931;
+		color: #FFF;
+		padding: 0.5em;
+		border-radius: 0.5em 0.5em 0 0;
+		margin-bottom: 2em;
+	}
+	.mainContainer{
+		background-color: #FFF;
+	}
+	.el-input {
+		width: 90%;
+	}
+	.el-button--primary:hover {
+    background-color: #393E46;
+    border-color: #393E46;
+	}
+	.el-button--primary {
+    background-color: #F07B3F;
+    border-color: #F07B3F;
+	}
+	a {
+		color: #F07B3F;
+		text-decoration: none;
+	}
+</style>

@@ -1,17 +1,20 @@
 <template>
  <!-- Separalos en componentes -->
 	<div class="ShowOther" v-if="itIsMe == false">
+		<Nav></Nav>
 		<h1>Perfil de {{ $route.params.name }}</h1>
 		<h2>bienvenid@ {{ userName }}</h2>
 		<router-link to="/hello"><button>Hello</button></router-link>
 	</div>
 	<div class="ShowMe" v-else-if="itIsMe == true">
+		<Nav></Nav>
 		<h1>Bienvenido a tu propio perfil {{ $route.params.name }}</h1>
 		<h2>username: {{ userName }}</h2>
 		<router-link to="/hello"><button>Hello</button></router-link>
 	</div>
 </template>
 <script>
+	import Nav from './Nav'
 	import firebase from 'firebase'
 	export default {
 		name: 'ShowName',
@@ -20,6 +23,9 @@
 				userName: '',
 				itIsMe: false,
 			}
+		},
+		components: {
+			Nav,
 		},
 		methods: {
 			findMe: function() {
